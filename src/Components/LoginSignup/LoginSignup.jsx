@@ -10,9 +10,8 @@ const LoginSignup = () => {
     return (
         <div className='container'>
             <div className="header">
-                <div className="text">
-                    <h1>Sign-Up</h1>
-                </div>
+                <div className="text">Sign Up</div>
+                <div className="underline"></div>
                 <div className="inputs">
                     <div className="input">
                         <img src={user_icon} alt="" />
