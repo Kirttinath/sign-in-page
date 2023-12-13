@@ -87,12 +87,16 @@
     height: 40px;
     color: rgb(0, 0, 0);
     background: linear-gradient(to right,#ffa500 ,#ff7e00 );
-    box-shadow: -2px 2px 5px rgba(255, 165, 0) ;
     border-radius: 20px;
     font-size: 19px;
+    border: 1px solid rgb(81, 81, 2);
     text-align: center;
     font-weight: 700;
     cursor: pointer;
     margin-left: 55px;
     margin-right: 55px;
+}
+.gray{
+    background: #e6fea3a4;
+    color: gray;
 }
