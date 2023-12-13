@@ -9,7 +9,7 @@
     flex-direction: column;
     margin: auto;
     margin-top: 100px;
-    padding-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 .header {
@@ -59,6 +59,39 @@
     outline: none;
     font-size: 20px;
     font-weight: 300;
-    color: rgb(4, 26, 45);
+    color: rgb(3, 25, 45);
     font-family: 'Hedvig Letters Serif', serif;
+}
+
+.forgot-password{
+    padding-left: 62px;
+    margin-top: 27px;
+    color: black;
+    font-size: 20px;
+}
+.forgot-password span{
+    color: #802093;
+    cursor: pointer;
+    padding-left: 0px;
+}
+.submit-container{
+    display: flex;
+    gap: 30px;
+    margin: 60px auto;
+}
+.submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 30px;
+    color: rgb(0, 0, 0);
+    background: linear-gradient(to right,#ffa500 ,#ff7e00 );
+    box-shadow: -2px 2px 5px rgba(255, 165, 0) ;
+    border-radius: 20px;
+    font-size: 19px;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    gap: 30px;
 }
