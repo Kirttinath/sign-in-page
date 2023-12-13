@@ -1,7 +1,7 @@
 import React from 'react'
 import "./LoginSignup.css";
 
-const LoginSignup = () => {
+ const LoginSignup = () => {
   return (
     <div>
       
