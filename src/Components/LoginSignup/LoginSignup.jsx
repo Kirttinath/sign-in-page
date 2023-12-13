@@ -8,7 +8,7 @@ import user_icon from "../Assets/user.png";
 
 const LoginSignup = () => {
 
-    const [action,setAction] = useState("Sign Up");
+    const [action,setAction] = useState("Log In");
     return (
         <div className='container'>
             <div className="header">
