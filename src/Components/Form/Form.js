@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axiosInstance from "./Interceptor";
 
 const AxiosPost = () => {
   const data = { fname: "", lastName: "" };
@@ -53,30 +54,130 @@ const AxiosPost = () => {
         console.log(err);
       });
   };
+
+  //? HTTP request for many urls
+  // Set the URLs to access
+  let urls = [
+    "https://api.storyblok.com/v2/cdn/stories/health?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt",
+    "https://api.storyblok.com/v2/cdn/datasources/?token=wANpEQEsMYGOwLxwXQ76Ggtt",
+    "https://api.storyblok.com/v2/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt",
+  ];
+  /*
+| Perform the HTTP get request via Axios
+| It returns a Promise immediately,
+| not the response
+*/
+  const requests = urls.map((url) => axios.get(url));
+  /*
+| For waiting the Promise is fulfilled
+| with the Response, use the then() method.
+| If the HTTP request received errors
+| use catch() method
+*/
+  axios.all(requests).then((responses) => {
+    responses.forEach((resp) => {
+      let msg = {
+        server: resp.headers.server,
+        status: resp.status,
+        fields: Object.keys(resp.data).toString(),
+      };
+      console.info(resp.config.url);
+      console.table(msg);
+    });
+  });
+
+  async function fetchUserData() {
+    try {
+      const response = await axiosInstance.get("/users/3");
+      console.log("User Data:", response.data);
+    } catch (error) {
+      console.error("An error occurred:", error.message);
+      // Here, you might handle errors coming from the backend
+    }
+  }
+
+  // Execute the function to fetch user data
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
   return (
-    <>
-      <label>First Name: </label>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        marginTop: "50px",
+      }}
+    >
+      <label style={{ fontFamily: "Jost", fontSize: "20px" }}>
+        First Name:{" "}
+      </label>
       <input
         type="text"
         name="fname"
         value={inputData.fname}
         onChange={handleData}
+        style={{ width: "200px", height: "30px", borderRadius: "9px" }}
       ></input>
       <br />
-      <label>Last Name: </label>
+      <label style={{ fontFamily: "Jost", fontSize: "20px" }}>
+        Last Name:{" "}
+      </label>
       <input
         type="text"
         name="lastName"
         value={inputData.lastName}
         onChange={handleData}
+        style={{ width: "200px", height: "30px", borderRadius: "9px" }}
       ></input>
       <br />
-      <button onClick={handleSubmit}>Submit</button>
+      <button
+        style={{
+          width: "100px",
+          height: "30px",
+          fontFamily: "Jost",
+          fontSize: "20px",
+          borderRadius: "10px",
+          backgroundColor: "blueviolet",
+          color: "whitesmoke",
+        }}
+        onClick={handleSubmit}
+      >
+        Submit
+      </button>
       <br />
-      <button onClick={handleUpdate}>Update</button>
+      <button
+        style={{
+          width: "100px",
+          height: "30px",
+          fontFamily: "Jost",
+          fontSize: "20px",
+          borderRadius: "10px",
+          backgroundColor: "yellow",
+          color: "black",
+        }}
+        onClick={handleUpdate}
+      >
+        Update
+      </button>
       <br />
-      <button onClick={handleDelete}>Delete</button>
-    </>
+      <button
+        style={{
+          width: "100px",
+          height: "30px",
+          fontFamily: "Jost",
+          fontSize: "20px",
+          borderRadius: "10px",
+          backgroundColor: "red",
+          color: "whitesmoke",
+        }}
+        onClick={handleDelete}
+      >
+        Delete
+      </button>
+    </div>
   );
 };
 export default AxiosPost;
