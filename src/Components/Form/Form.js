@@ -111,7 +111,7 @@ const AxiosPost = () => {
         marginTop: "50px",
       }}
     >
-      <label style={{ fontFamily: "Jost", fontSize: "20px" }}>
+      <label style={{ fontFamily: "Ornitons-Serial", fontSize: "20px" }}>
         First Name:{" "}
       </label>
       <input
@@ -122,7 +122,7 @@ const AxiosPost = () => {
         style={{ width: "200px", height: "30px", borderRadius: "9px" }}
       ></input>
       <br />
-      <label style={{ fontFamily: "Jost", fontSize: "20px" }}>
+      <label style={{ fontFamily: "Ornitons-Serial", fontSize: "20px" }}>
         Last Name:{" "}
       </label>
       <input
