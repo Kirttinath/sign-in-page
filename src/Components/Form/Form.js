@@ -57,34 +57,34 @@ const AxiosPost = () => {
 
   //? HTTP request for many urls
   // Set the URLs to access
-  let urls = [
-    "https://api.storyblok.com/v2/cdn/stories/health?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt",
-    "https://api.storyblok.com/v2/cdn/datasources/?token=wANpEQEsMYGOwLxwXQ76Ggtt",
-    "https://api.storyblok.com/v2/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt",
-  ];
-  /*
-| Perform the HTTP get request via Axios
-| It returns a Promise immediately,
-| not the response
-*/
-  const requests = urls.map((url) => axios.get(url));
-  /*
-| For waiting the Promise is fulfilled
-| with the Response, use the then() method.
-| If the HTTP request received errors
-| use catch() method
-*/
-  axios.all(requests).then((responses) => {
-    responses.forEach((resp) => {
-      let msg = {
-        server: resp.headers.server,
-        status: resp.status,
-        fields: Object.keys(resp.data).toString(),
-      };
-      console.info(resp.config.url);
-      console.table(msg);
-    });
-  });
+  //   let urls = [
+  //     "https://api.storyblok.com/v2/cdn/stories/health?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt",
+  //     "https://api.storyblok.com/v2/cdn/datasources/?token=wANpEQEsMYGOwLxwXQ76Ggtt",
+  //     "https://api.storyblok.com/v2/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt",
+  //   ];
+  //   /*
+  // | Perform the HTTP get request via Axios
+  // | It returns a Promise immediately,
+  // | not the response
+  // */
+  //   const requests = urls.map((url) => axios.get(url));
+  //   /*
+  // | For waiting the Promise is fulfilled
+  // | with the Response, use the then() method.
+  // | If the HTTP request received errors
+  // | use catch() method
+  // */
+  //   axios.all(requests).then((responses) => {
+  //     responses.forEach((resp) => {
+  //       let msg = {
+  //         server: resp.headers.server,
+  //         status: resp.status,
+  //         fields: Object.keys(resp.data).toString(),
+  //       };
+  //       console.info(resp.config.url);
+  //       console.table(msg);
+  //     });
+  //   });
 
   async function fetchUserData() {
     try {
